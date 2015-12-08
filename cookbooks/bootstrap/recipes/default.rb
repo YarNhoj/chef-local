@@ -34,7 +34,7 @@
 
 begin
   ga = data_bag_item('apps','global')
-  u  = data_bag_item('config', Etc.getlogin)
+  u  = data_bag_item('config', "#{ENV['SUDO_USER']}")
 rescue Net::HTTPServerException => e
   Chef::Application.fatal!("#{cookbook_name} could not load data bag; #{e}")
 end
