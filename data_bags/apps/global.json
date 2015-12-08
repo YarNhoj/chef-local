@@ -12,11 +12,16 @@
     "dkms": ""
   },
   "apps-ppa": {
-    "virtualbox": {
+    "virtualbox-5.0": {
       "uri": "http://download.virtualbox.org/virtualbox/debian",
       "key": "http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc",
-      "version": "5.0"
-    }
+      "comp": "contrib"
+    },
+    "google-chrome": {
+      "uri": "http://dl.google.com/linux/chrome/deb",
+      "key": "https://dl-ssl.google.com/linux/linux_signing_key.pub",
+      "comp": "main"
+    }    
   },
   "apps-remote":{
     "vagrant": {

@@ -54,10 +54,10 @@ ga['apps-ppa'].each do |app,data|
     uri data['uri']
     key data['key']
     distribution node['lsb']['codename']
-    components ['contrib']
+    components data['comp']
   end
 
-  package "#{app}-#{data['version']}" do
+  package app do
     action :install
   end
 
