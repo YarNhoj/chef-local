@@ -57,7 +57,7 @@ ga['apps-ppa'].each do |app,data|
     components ['contrib']
   end
 
-  package app-"#{data['name']}" do
+  package app"-#{data['name']}" do
     action :install
   end
 
