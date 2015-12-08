@@ -45,6 +45,21 @@ ga['packages'].each do |p,v|
   end
 end
 
+ga['apps'].each do |app,data|
+  
+  apt_repository app do
+    uri data['uri']
+    key data['key']
+    distribution node['lsb']['codename']
+    components ['contrib']
+  end
+  
+  package "virtualbox-#{data['version']}" do
+    action :install
+  end
+
+end 
+  
 user u['id'] do
   comment u['comment']
   uid u['uid']
