@@ -45,11 +45,9 @@ ga['packages'].each do |p,v|
   end
 end
 
-<<<<<<< HEAD
 home_dir = "/home/#{u['id']}"
 group_id = u['id']
 
-=======
 ga['apps'].each do |app,data|
   
   apt_repository app do
@@ -65,7 +63,6 @@ ga['apps'].each do |app,data|
 
 end 
   
->>>>>>> eea0643020200a17101f1f42fa0f6abd69416487
 user u['id'] do
   comment u['comment']
   uid u['uid']
