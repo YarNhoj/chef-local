@@ -53,8 +53,8 @@ ga['apps-ppa'].each do |app,data|
   apt_repository app do
     uri data['uri']
     key data['key']
-    distribution node['lsb']['codename']
-    components data['comp']
+    distribution data['dist']
+    components [data['comp']]
   end
 
   package app do

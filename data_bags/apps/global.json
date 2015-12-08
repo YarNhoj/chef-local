@@ -15,12 +15,14 @@
     "virtualbox-5.0": {
       "uri": "http://download.virtualbox.org/virtualbox/debian",
       "key": "http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc",
-      "comp": "contrib"
+      "comp": "contrib",
+      "dist": "wily"
     },
-    "google-chrome": {
+    "google-chrome-stable": {
       "uri": "http://dl.google.com/linux/chrome/deb",
       "key": "https://dl-ssl.google.com/linux/linux_signing_key.pub",
-      "comp": "main"
+      "comp": "main",
+      "dist": "stable"
     }    
   },
   "apps-remote":{
