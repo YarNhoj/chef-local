@@ -7,28 +7,56 @@
 #
 #
 
-Apps
-  Vagrant
-  Virtual Box
-  ChefDk
-  Docker
-  OpenVPN
-  CiscoAnyConnect
-  VSCode
-  google chrome
+#Apps
+#  Vagrant
+#  Virtual Box
+#  ChefDk
+#  Docker
+#  OpenVPN
+#  CiscoAnyConnect
+#  VSCode
+#  google chrome
+#
+#RPMS
+#  wget
+#  git
+#  curl
+#  ansible
+#
+#System
+#  rvm?
+#  user creation
+#  home directory setup
+#  ssh
+#  zsh
+#  vim
+#  tmux
 
-RPMS
-  wget
-  git
-  curl
-  ansible
+begin
+  ga = data_bag_item("apps","global")
+  u  = data_bag_item("config", Etc.getlogin)
+rescue Net::HTTPServerException => e
+  Chef::Application.fatal!("#{cookbook_name} could not load data bag; #{e}")
+end
 
-System
-  rvm?
-  user creation
-  home directory setup
-  ssh
-  bash
-  vim
-  tmux
+ga['packages'].each do |p,v|
+  package p do
+    action :install
+  end
+end
 
+u['dirs'].each do |dir|
+  directory "#{ENV['HOME']}/#{dir}" do
+    recursive true
+  end
+
+if u.has_key?("repos")
+  u["repos"].each do |target, repo|
+    git "#{ENV['HOME']}/#{target}" do
+      repository repo['repo']
+      reference repo['revision']
+      action :sync
+      user u['id']
+    end
+  end
+end
