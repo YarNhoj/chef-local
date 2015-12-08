@@ -15,7 +15,10 @@
     "VirtualBox": {
       "uri": "http://download.virtualbox.org/virtualbox/debian",
       "key": "http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc",
-      "version": "5.0"
+      "name": "virtualbox-5.0"
+    },
+    "Vagrant": {
+      ""
     }
   } 
 }

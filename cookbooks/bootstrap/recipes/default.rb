@@ -57,7 +57,7 @@ ga['apps'].each do |app,data|
     components ['contrib']
   end
   
-  package "virtualbox-#{data['version']}" do
+  package "#{data['name']}" do
     action :install
   end
 
