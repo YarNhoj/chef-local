@@ -45,10 +45,13 @@ ga['packages'].each do |p,v|
   end
 end
 
+home_dir = "/home/#{u['id']}"
+group_id = u['id']
+
 user u['id'] do
   comment u['comment']
   uid u['uid']
-  gid u['gid']
+  gid u['uid']
   home u['home']
   shell u['shell']
   password "#{ENV['USER_PASSWORD']}" || 'changeme'
