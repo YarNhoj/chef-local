@@ -45,9 +45,21 @@ ga['packages'].each do |p,v|
   end
 end
 
-u['dirs'].each do |dir|
-  directory "#{ENV['HOME']}/#{dir}" do
-    recursive true
+user u['id'] do
+  comment u['comment']
+  uid u['uid']
+  gid u['gid']
+  home u['home']
+  shell u['shell']
+  password "#{ENV['USER_PASSWORD']}" || 'changeme'
+  action :create
+end
+
+if u.has_key?('dirs')
+  u['dirs'].each do |dir|
+    directory "#{ENV['HOME']}/#{dir}" do
+      recursive true
+    end
   end
 end
 
@@ -59,5 +71,40 @@ if u.has_key?('repos')
       action :sync
       user u['id']
     end
+  end
+end
+
+if u.has_key?("ssh_keys")
+  directory "#{home_dir}/.ssh" do
+    owner u['id']
+    group group_id
+    mode "0700"
+  end
+
+  template "#{home_dir}/.ssh/authorized_keys" do
+    source "authorized_keys.erb"
+    owner u['id']
+    group group_id
+    mode "0600"
+    variables :ssh_keys => u['ssh_keys']
+  end
+end
+
+if u.has_key?("files")
+  u["files"].each do |filename, file_data|
+    directory "#{home_dir}/#{File.dirname(filename)}" do
+      recursive true
+      mode 0755
+    end if file_data['subdir']
+
+    cookbook_file "#{home_dir}/#{filename}" do
+      source "#{u['id']}/#{file_data['source']}"
+      owner u['id']
+      group group_id
+      mode file_data['mode']
+      ignore_failure true
+      backup 0
+    end
+
   end
 end
