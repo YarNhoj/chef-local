@@ -48,21 +48,34 @@ end
 home_dir = "/home/#{u['id']}"
 group_id = u['id']
 
-ga['apps'].each do |app,data|
-  
+ga['apps-ppa'].each do |app,data|
+
   apt_repository app do
     uri data['uri']
     key data['key']
     distribution node['lsb']['codename']
     components ['contrib']
   end
-  
-  package "#{data['name']}" do
+
+  package app-"#{data['name']}" do
     action :install
   end
 
-end 
-  
+end
+
+ga['apps-remote'].each do |app,data|
+  remote_file "#{Chef::Config[:file_cache_path]}/#{app}.deb" do
+    source data['url']
+    checksum data['checksum']
+    notifies :install, 'dpkg_package[app]', :immediately
+  end
+
+  dpkg_package app do
+    source "#{Chef::Config[:file_cache_path]}/#{app}.deb"
+  end
+
+end
+
 user u['id'] do
   comment u['comment']
   uid u['uid']
