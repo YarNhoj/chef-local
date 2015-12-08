@@ -67,7 +67,7 @@ ga['apps-remote'].each do |app,data|
   remote_file "#{Chef::Config[:file_cache_path]}/#{app}.deb" do
     source data['url']
     checksum data['checksum']
-    notifies :install, 'dpkg_package[app]', :immediately
+    notifies :install, "dpkg_package[#{app}]", :immediately
   end
 
   dpkg_package app do
