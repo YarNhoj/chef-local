@@ -8,20 +8,8 @@
 #
 
 #Apps
-#  Vagrant
-#  Virtual Box
-#  ChefDk
-#  Docker
-#  OpenVPN
 #  CiscoAnyConnect
 #  VSCode
-#  google chrome
-#
-#RPMS
-#  wget
-#  git
-#  curl
-#  ansible
 #
 #System
 #  rvm?
@@ -53,6 +41,7 @@ ga['apps-ppa'].each do |app,data|
   apt_repository app do
     uri data['uri']
     key data['key']
+    keyserver data['keyserver']
     distribution data['dist']
     components [data['comp']]
   end
@@ -82,7 +71,6 @@ user u['id'] do
   gid u['uid']
   home u['home']
   shell u['shell']
-  password "#{ENV['USER_PASSWORD']}" || 'changeme'
   action :create
 end
 

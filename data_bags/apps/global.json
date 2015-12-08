@@ -9,13 +9,28 @@
     "vim": "",
     "openvpn": "",
     "zsh": "",
-    "dkms": ""
+    "dkms": "",
+    "software-properties-common": ""
   },
   "apps-ppa": {
     "virtualbox-5.0": {
       "uri": "http://download.virtualbox.org/virtualbox/debian",
       "key": "http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc",
       "comp": "contrib",
+      "dist": "wily"
+    },
+    "docker-engine": {
+      "uri": "https://apt.dockerproject.org/repo",
+      "key": "58118E89F3A912897C070ADBF76221572C52609D",
+      "keyserver": "hkp://p80.pool.sks-keyservers.net:80",
+      "comp": "main",
+      "dist": "ubuntu-wily"
+    },
+    "ansible": {
+      "uri": "http://ppa.launchpad.net/ansible/ansible/ubuntu",
+      "keyserver": "hkp://keyserver.ubuntu.com",
+      "key": "6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367",
+      "comp": "main",
       "dist": "wily"
     },
     "google-chrome-stable": {
