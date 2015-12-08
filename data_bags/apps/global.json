@@ -15,7 +15,7 @@
     "VirtualBox": {
       "uri": "http://download.virtualbox.org/virtualbox/debian",
       "key": "http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc",
-      "version": "5.0.10"
+      "version": "5.0"
     }
   } 
 }
