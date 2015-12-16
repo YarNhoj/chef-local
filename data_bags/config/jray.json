@@ -17,12 +17,18 @@
   "shell": "/bin/zsh",
   "dirs": [
     "bin",
-    "git"
-  ]
-  }
-   /*"repos": {
+    "git",
+    "dev"
+  ],
+   "repos": {
+    ".local/share/gnome-shell/extensions/gTile@vibou": {
+      "repo": "https://github.com/vibou/vibou.gTile",
+      "revision":"HEAD"
+      }
+    }
+}
     
-      Repositories that should be checked out. They have the following
+   /*   Repositories that should be checked out. They have the following
       structure:
       "path_under_$HOME": {
         "repo": "git_url_to_repository",
@@ -34,7 +40,7 @@
       "repo": "git://github.com/sstephenson/rbenv.git",
       "revision": "HEAD
     }
-  },*/
+  */
    /*"files": {
     
       Files that live in users cookbook for the user. For example,

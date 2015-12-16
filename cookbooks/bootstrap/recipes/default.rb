@@ -17,8 +17,7 @@
 #  home directory setup
 #  ssh
 #  zsh
-#  vim
-#  tmux
+# vim
 
 begin
   ga = data_bag_item('apps','global')
@@ -31,6 +30,11 @@ ga['packages'].each do |p,v|
   package p do
     action :install
   end
+end
+
+docker_service 'default' do
+  action [:create, :start]
+  host [ "tcp://#{node['ipaddress']}:2376", 'unix:///var/run/docker.sock' ]
 end
 
 home_dir = "/home/#{u['id']}"
@@ -72,6 +76,12 @@ user u['id'] do
   home u['home']
   shell u['shell']
   action :create
+end
+
+# Install oh my zsh
+execute 'omz_install' do
+  command 'sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+  user 'jray'
 end
 
 if u.has_key?('dirs')

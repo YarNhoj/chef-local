@@ -10,6 +10,8 @@
     "openvpn": "",
     "zsh": "",
     "dkms": "",
+    "pidgin": "",
+    "ubuntu-make": "",
     "software-properties-common": ""
   },
   "apps-ppa": {
@@ -18,13 +20,6 @@
       "key": "http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc",
       "comp": "contrib",
       "dist": "wily"
-    },
-    "docker-engine": {
-      "uri": "https://apt.dockerproject.org/repo",
-      "key": "58118E89F3A912897C070ADBF76221572C52609D",
-      "keyserver": "hkp://p80.pool.sks-keyservers.net:80",
-      "comp": "main",
-      "dist": "ubuntu-wily"
     },
     "ansible": {
       "uri": "http://ppa.launchpad.net/ansible/ansible/ubuntu",

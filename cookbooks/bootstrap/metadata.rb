@@ -7,3 +7,4 @@ long_description 'Installs/Configures bootstrap'
 version '0.1.0'
 
 depends 'apt', '~> 2.9.2'
+depends 'docker', '~> 2.3.3'
