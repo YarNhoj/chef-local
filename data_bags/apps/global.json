@@ -12,7 +12,8 @@
     "dkms": "",
     "pidgin": "",
     "ubuntu-make": "",
-    "software-properties-common": ""
+    "software-properties-common": "",
+    "cellwriter": ""
   },
   "apps-ppa": {
     "virtualbox-5.0": {
