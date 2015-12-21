@@ -88,6 +88,8 @@ if u.has_key?('dirs')
   u['dirs'].each do |dir|
     directory "#{ENV['HOME']}/#{dir}" do
       recursive true
+      user u['id']
+      group u['id']
     end
   end
 end
